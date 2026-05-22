@@ -216,6 +216,10 @@ npm run build
 # Start backend only (serve frontend dist via Nginx/CDN)
 npm start --prefix backend
 ```
+## Dashboard Screenshots
+<img width="1722" height="1007" alt="image" src="https://github.com/user-attachments/assets/b104bcbe-6f7b-4f64-ba2f-5f9b9f0f5da4" />
+
+<img width="1722" height="861" alt="image" src="https://github.com/user-attachments/assets/ccb1ad5a-21de-4e64-b1df-673fcce033bb" />
 
 ## License
 
