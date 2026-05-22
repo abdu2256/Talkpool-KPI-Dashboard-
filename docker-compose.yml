@@ -1,0 +1,18 @@
+# Optional: run PostgreSQL with Docker
+# Usage: npm run db:up
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: talkpool-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: talkpool_kpi
+    ports:
+      - "5432:5432"
+    volumes:
+      - talkpool_pg_data:/var/lib/postgresql/data
+
+volumes:
+  talkpool_pg_data:

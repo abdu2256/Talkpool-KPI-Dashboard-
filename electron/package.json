@@ -1,0 +1,72 @@
+{
+  "name": "talkpool-kpi-desktop",
+  "version": "1.0.0",
+  "description": "Talkpool Telecom KPI Dashboard - Windows Desktop App",
+  "main": "main.js",
+  "author": "Talkpool",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "cd ../backend && npx @electron/rebuild -f -w better-sqlite3 --version 33.2.1",
+    "build": "electron-builder --win --x64",
+    "build:dir": "electron-builder --win --x64 --dir"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.1",
+    "electron": "33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.talkpool.kpi",
+    "productName": "Talkpool KPI Dashboard",
+    "copyright": "Copyright © 2025 Talkpool",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!**/.env",
+          "!uploads/**/*"
+        ]
+      },
+      {
+        "from": "../frontend/dist",
+        "to": "frontend/dist"
+      },
+      {
+        "from": "../sample-data",
+        "to": "sample-data"
+      }
+    ],
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Talkpool KPI",
+      "installerLanguages": ["en_US"],
+      "language": "1033"
+    }
+  }
+}

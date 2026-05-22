@@ -1,0 +1,26 @@
+/* Layout-specific overrides (main styles in global.css) */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.25s ease;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.app-layout--collapsed .main-content {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+.page-container {
+  padding: 24px 28px 40px;
+  max-width: 1600px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
